@@ -1,0 +1,16 @@
+<?php
+
+namespace App\Http\Middlewares;
+
+class CLASSNAME
+{    
+    /**
+     * handle function
+     *
+     * @return void
+     */
+    public function handle(): void
+    {
+       //
+    }
+}

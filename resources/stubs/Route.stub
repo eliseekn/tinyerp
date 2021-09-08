@@ -1,0 +1,16 @@
+
+Route::groupPrefix('admin', function () {
+    Route::groupMiddlewares(['remember', 'auth'], function () {
+        Route::get('resources/RESOURCENAME', [CLASSNAME::class, 'index'])->name('RESOURCENAME.index');
+        Route::get('resources/RESOURCENAME/new', [CLASSNAME::class, 'new'])->name('RESOURCENAME.new');
+        Route::get('resources/RESOURCENAME/{id:num}/edit', [CLASSNAME::class, 'edit'])->name('RESOURCENAME.edit');
+        Route::get('resources/RESOURCENAME/{id:num}/read', [CLASSNAME::class, 'read'])->name('RESOURCENAME.read');
+    });
+
+    Route::groupMiddlewares(['remember', 'auth', 'csrf', 'sanitize'], function () {
+        Route::delete('resources/RESOURCENAME/?{id:num}?/delete', [CLASSNAME::class, 'delete'])->name('RESOURCENAME.delete');
+        Route::patch('resources/RESOURCENAME/?{id:num}?/update', [CLASSNAME::class, 'update'])->name('RESOURCENAME.update');
+        Route::post('resources/RESOURCENAME/create', [CLASSNAME::class, 'create'])->name('RESOURCENAME.create');
+        Route::post('resources/RESOURCENAME/export', [CLASSNAME::class, 'export'])->name('RESOURCENAME.export');
+    });
+})->register();
